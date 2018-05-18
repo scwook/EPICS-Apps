@@ -7,7 +7,8 @@ option +r;
 double aiValue;
 double aoValue;
 
-double function;
+double aiFunction;
+double aoFunction;
 double x;
 
 assign aiValue to "{SYS}-{SUBSYS}:{DEV}-{SUBDEV}:ai";
@@ -19,7 +20,8 @@ ss ssMain
   {
     when(delay(1))
     {
-      function = 0.0;
+      aiFunction = 0.0;
+      aoFunction = 0.0;
 
       printf("Start Analog sequence\n");
     } state on
@@ -29,11 +31,12 @@ ss ssMain
   {
     when(delay(1))
     {
-	x = x + 0.05;
-        function = sin(3*sin(2*x));
+	x = x + 0.01;
+        aiFunction = sin(3*sin(2*x));
+	aoFunction = sin(20*x)*cos(x);
 
-        aiValue = function;
-        aoValue = -function;
+        aiValue = aiFunction;
+        aoValue = aoFunction;
      
         pvPut(aiValue);
         pvPut(aoValue);
