@@ -1,0 +1,20 @@
+recExample_registerRecordDeviceDriver.o: \
+ recExample_registerRecordDeviceDriver.cpp \
+ /home/scwook/epics/R3.14.12.5/base/include/epicsStdlib.h \
+ /home/scwook/epics/R3.14.12.5/base/include/shareLib.h \
+ /home/scwook/epics/R3.14.12.5/base/include/os/Linux/osdStrtod.h \
+ /home/scwook/epics/R3.14.12.5/base/include/iocsh.h \
+ /home/scwook/epics/R3.14.12.5/base/include/shareLib.h \
+ /home/scwook/epics/R3.14.12.5/base/include/iocshRegisterCommon.h \
+ /home/scwook/epics/R3.14.12.5/base/include/registryCommon.h \
+ /home/scwook/epics/R3.14.12.5/base/include/dbStaticLib.h \
+ /home/scwook/epics/R3.14.12.5/base/include/dbFldTypes.h \
+ /home/scwook/epics/R3.14.12.5/base/include/dbBase.h \
+ /home/scwook/epics/R3.14.12.5/base/include/epicsTypes.h \
+ /home/scwook/epics/R3.14.12.5/base/include/ellLib.h \
+ /home/scwook/epics/R3.14.12.5/base/include/dbDefs.h \
+ /home/scwook/epics/R3.14.12.5/base/include/link.h \
+ /home/scwook/epics/R3.14.12.5/base/include/errMdef.h \
+ /home/scwook/epics/R3.14.12.5/base/include/cantProceed.h \
+ /home/scwook/epics/R3.14.12.5/base/include/registryRecordType.h \
+ /home/scwook/epics/R3.14.12.5/base/include/recSup.h

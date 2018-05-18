@@ -1,0 +1,120 @@
+record(bi, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):bi")
+{
+  field(DESC, "Binary Input")
+  field(VAL, "0")
+  field(ZNAM, "ON")
+  field(ONAM, "OFF")
+  field(PINI, "YES")
+}
+
+record(bo, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):bo")
+{
+  field(DESC, "Binary Output")
+  field(VAL, "0")
+  field(ZNAM, "ON")
+  field(ONAM, "OFF")
+  field(PINI, "YES")
+}
+
+record(mbbi, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):mbbi")
+{
+  field(DESC, "Multi-Bit Binary Input")
+  field(VAL, "0")
+  field(NOBT, "8")
+  field(ZRST, "Zero String")
+  field(ONST, "One String")
+  field(TWST, "Two String")
+  field(THST, "Three String")
+  field(FRST, "Four String")
+  field(FVST, "Five String")
+  field(SXST, "Six String")
+  field(SVST, "Sevent String")
+  field( ZRVL, 0)
+  field( ONVL, 10)
+  field( TWVL, 20)
+  field( THVL, 30)
+  field( FRVL, 40)
+  field( FVVL, 50)
+  field( SXVL, 60)
+  field( SVVL, 70)
+  field( EIVL, 80)
+  field( NIVL, 90)
+  field( TEVL, 100)
+  field(PINI, "YES")
+}
+
+record(mbbi, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):mbbo")
+{
+  field(DESC, "Multi-Bit Binary Output")
+  field(VAL, "0")
+  field(NOBT, "8")
+  field(ZRST, "Zero String")
+  field(ONST, "One String")
+  field(TWST, "Two String")
+  field(THST, "Three String")
+  field(FRST, "Four String")
+  field(FVST, "Five String")
+  field(SXST, "Six String")
+  field(SVST, "Sevent String")
+  field( ZRVL, 0)
+  field( ONVL, 1)
+  field( TWVL, 2)
+  field( THVL, 3)
+  field( FRVL, 4)
+  field( FVVL, 5)
+  field( SXVL, 6)
+  field( SVVL, 7)
+  field( EIVL, 8)
+  field( NIVL, 9)
+  field( TEVL, 10)
+  field(PINI, "YES")
+}
+
+record(mbbiDirect, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):mbbiDirect")
+{
+  field(DESC, "Multi-Bit Binary Input Direct")
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+record(mbboDirect, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):mbboDirect")
+{
+  field(DESC, "Multi-Bit Binary Output Di
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+record(longin, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):longin")
+{
+  field(DESC, "Long Input")
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+record(longout, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):longout")
+{
+  field(DESC, "Long Output")
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+record(ai, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):ai")
+{
+  field(DESC, "Analog Input")
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+record(ao, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):ao")
+{
+  field(DESC, "Analog Output")
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+record(waveform, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):ao")
+{
+  field(DESC, "Waveform")
+  field(NELM, "1000")
+  field(FTVL. "DOUBLE")
+}
