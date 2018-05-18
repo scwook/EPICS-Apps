@@ -36,6 +36,14 @@ recExample_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 #===========================
 
+ifneq ($(SNCSEQ),)
+    recExample_DBD += seqRecExample.dbd
+    recExample_SRCS += seqBinary.stt
+    recExample_SRCS += seqAnalog.stt
+    recExample_SRCS += seqWaveform.stt
+    recExample_LIBS += seq pv
+endif
+
 include $(TOP)/configure/RULES
 #----------------------------------------
 #  ADD RULES AFTER THIS LINE

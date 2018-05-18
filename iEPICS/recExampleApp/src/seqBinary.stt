@@ -1,0 +1,44 @@
+program seqBinary
+
+option +r;
+
+int biValue;
+int boValue;
+
+assign biValue to "{SYS}-{SUBSYS}:{DEV}-{SUBDEV}:bi";
+assign boValue to "{SYS}-{SUBSYS}:{DEV}-{SUBDEV}:bo";
+
+ss ssMain
+{
+  state init
+  {
+    when(delay(1))
+    {
+      printf("Start Binary sequence\n");
+    } state on
+  }
+
+  state on
+  {
+    when(delay(1))
+    {
+      biValue = 0;
+      boValue = 0;
+
+      pvPut(biValue);
+      pvPut(boValue);
+    } state off
+  }
+
+  state off
+  {
+    when(delay(1))
+    {
+      biValue = 1;
+      boValue = 1;
+
+      pvPut(biValue);
+      pvPut(boValue);
+    } state on
+  }
+}

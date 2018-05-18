@@ -1,0 +1,3 @@
+registrar(seqBinaryRegistrar)
+registrar(seqAnalogRegistrar)
+registrar(seqWaveformRegistrar)

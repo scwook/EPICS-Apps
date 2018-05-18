@@ -1,0 +1,43 @@
+program seqWaveform
+
+option +r;
+
+%% #include <math.h>
+
+double wave[1000];
+double x;
+double offset;
+
+int i;
+
+assign wave to "{SYS}-{SUBSYS}:{DEV}-{SUBDEV}:waveform";
+
+ss ssMain
+{
+  state init
+  {
+    when(delay(1))
+    {
+      offset = 0;
+      printf("Start Waveform sequence\n");
+    } state on
+  }
+
+  state on
+  {
+    when(delay(1))
+    {
+        offset = offset + 0.1;
+	x = offset;
+
+	for(i=0;i<1000;i++)
+        {
+          wave[i] = sin(2*sin(2*sin(2*sin(x))));
+          x = x + 0.05;
+        }
+
+        pvPut(wave);
+
+    } state on
+  }
+}

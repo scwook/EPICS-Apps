@@ -79,7 +79,7 @@ record(mbbiDirect, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):mbbiDirect")
 
 record(mbboDirect, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):mbboDirect")
 {
-  field(DESC, "Multi-Bit Binary Output Di
+  field(DESC, "Multi-Bit Binary Output Direct")
   field(VAL, "0")
   field(PINI, "YES")
 }
@@ -112,9 +112,9 @@ record(ao, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):ao")
   field(PINI, "YES")
 }
 
-record(waveform, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):ao")
+record(waveform, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):waveform")
 {
   field(DESC, "Waveform")
   field(NELM, "1000")
-  field(FTVL. "DOUBLE")
+  field(FTVL, "DOUBLE")
 }

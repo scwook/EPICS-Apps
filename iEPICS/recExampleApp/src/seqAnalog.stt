@@ -1,0 +1,42 @@
+program seqAnalog
+
+option +r;
+
+%% #include <math.h>
+
+double aiValue;
+double aoValue;
+
+double function;
+double x;
+
+assign aiValue to "{SYS}-{SUBSYS}:{DEV}-{SUBDEV}:ai";
+assign aoValue to "{SYS}-{SUBSYS}:{DEV}-{SUBDEV}:ao";
+
+ss ssMain
+{
+  state init
+  {
+    when(delay(1))
+    {
+      function = 0.0;
+
+      printf("Start Analog sequence\n");
+    } state on
+  }
+
+  state on
+  {
+    when(delay(1))
+    {
+	x = x + 0.05;
+        function = sin(3*sin(2*x));
+
+        aiValue = function;
+        aoValue = -function;
+     
+        pvPut(aiValue);
+        pvPut(aoValue);
+    } state on
+  }
+}

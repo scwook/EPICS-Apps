@@ -5,6 +5,8 @@
 
 < envPaths
 
+epicsEnvSet("EPICS_CA_MAX_ARRAY_BYTES","1000000")
+
 cd "${TOP}"
 
 ## Register all support components
@@ -19,4 +21,6 @@ cd "${TOP}/iocBoot/${IOC}"
 iocInit
 
 ## Start any sequence programs
-#seq sncxxx,"user=scwookHost"
+seq seqBinary, "SYS=scwook,SUBSYS=iepics,DEV=record,SUBDEV=test"
+seq seqAnalog, "SYS=scwook,SUBSYS=iepics,DEV=record,SUBDEV=test"
+seq seqWaveform, "SYS=scwook,SUBSYS=iepics,DEV=record,SUBDEV=test"
