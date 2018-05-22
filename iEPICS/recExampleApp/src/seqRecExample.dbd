@@ -1,3 +1,4 @@
 registrar(seqBinaryRegistrar)
 registrar(seqAnalogRegistrar)
 registrar(seqWaveformRegistrar)
+registrar(seqLongRegistrar)

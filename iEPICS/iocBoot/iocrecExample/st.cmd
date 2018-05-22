@@ -24,3 +24,4 @@ iocInit
 seq seqBinary, "SYS=scwook,SUBSYS=iepics,DEV=record,SUBDEV=test"
 seq seqAnalog, "SYS=scwook,SUBSYS=iepics,DEV=record,SUBDEV=test"
 seq seqWaveform, "SYS=scwook,SUBSYS=iepics,DEV=record,SUBDEV=test"
+seq seqLong, "SYS=scwook,SUBSYS=iepics,DEV=record,SUBDEV=test"

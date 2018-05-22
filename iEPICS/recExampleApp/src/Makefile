@@ -41,6 +41,7 @@ ifneq ($(SNCSEQ),)
     recExample_SRCS += seqBinary.stt
     recExample_SRCS += seqAnalog.stt
     recExample_SRCS += seqWaveform.stt
+    recExample_SRCS += seqLong.stt
     recExample_LIBS += seq pv
 endif
 

@@ -1,12 +1,23 @@
-program seqBinary
+program seqLong
 
 option +r;
 
-int biValue;
-int boValue;
+%% #include <math.h>
 
-assign biValue to "{SYS}-{SUBSYS}:{DEV}-{SUBDEV}:bi";
-assign boValue to "{SYS}-{SUBSYS}:{DEV}-{SUBDEV}:bo";
+int longinValue;
+int longoutValue;
+
+int randValue;
+double pi;
+
+double parentWave;
+double childWave;
+double a;
+double x;
+int dir;
+
+assign longinValue to "{SYS}-{SUBSYS}:{DEV}-{SUBDEV}:longin";
+assign longoutValue to "{SYS}-{SUBSYS}:{DEV}-{SUBDEV}:longout";
 
 ss ssMain
 {
@@ -14,31 +25,48 @@ ss ssMain
   {
     when(delay(1))
     {
-      printf("Start Binary sequence\n");
+      randValue = 0;
+      pi = 3.1415926;
+      parentWave = 0.0;
+      childWave = 0.0;
+      a = 8;
+      x = 0.0;
+      dir = 1;
+
+      printf("Start Long sequence\n");
     } state on
   }
 
   state on
   {
-    when(delay(1))
+    when(delay(0.1))
     {
-      biValue = 0;
-      boValue = 0;
+      if(x >= (100 * pi)) {
+        x = 0.0;
+        if(dir == 1) {
+          a = a * 2;
+        } else {
+          a = a / 2;
+        }
+      }
+ 
+      parentWave = a * sin(2 * sin(2 * sin(2 * sin(x/50))));
+      childWave = 5 * sin(x/10) * sin(2 * sin(2 * sin(2 * sin(x))));
 
-      pvPut(biValue);
-      pvPut(boValue);
-    } state off
-  }
+      longinValue = parentWave + childWave;
+      longoutValue = -longinValue;
 
-  state off
-  {
-    when(delay(1))
-    {
-      biValue = 1;
-      boValue = 1;
+      pvPut(longinValue);
+      pvPut(longoutValue);
 
-      pvPut(biValue);
-      pvPut(boValue);
+      x = x + 0.01;
+
+      if(a >= 10000000) {
+        dir == 0;
+      } else if(a <= 8) {
+        dir == 1;
+      }
+
     } state on
   }
 }
