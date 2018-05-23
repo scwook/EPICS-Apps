@@ -1,0 +1,40 @@
+program seqString
+
+option +r;
+
+string stringIn;
+string stringOut;
+
+char buf[40];
+int count;
+int i;
+
+assign stringIn to "{SYS}-{SUBSYS}:{DEV}-{SUBDEV}:stringin";
+assign stringOut to "{SYS}-{SUBSYS}:{DEV}-{SUBDEV}:stringout";
+
+ss ssMain
+{
+  state init
+  {
+    when(delay(1))
+    {
+      count = 0;
+      printf("Start String sequence\n");
+    } state on
+  }
+
+  state on
+  {
+    when(delay(10))
+    {
+       sprintf(stringIn, "String In Count: %d", count);
+       sprintf(stringOut, "String Out Count: %d", -count);
+     
+      pvPut(stringIn);
+      pvPut(stringOut);
+
+      count += 1;
+
+    } state on
+  }
+}

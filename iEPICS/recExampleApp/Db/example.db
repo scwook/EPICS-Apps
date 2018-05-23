@@ -118,3 +118,17 @@ record(waveform, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):waveform")
   field(NELM, "1000")
   field(FTVL, "DOUBLE")
 }
+
+record(stringin, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):stringin")
+{
+  field(DESC, "String In")
+  field(VAL, "First String In")
+  field(PINI, "YES")
+}
+
+record(stringout, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):stringout")
+{
+  field(DESC, "String Out")
+  field(VAL, "First String Out")
+  field(PINI, "YES")
+} 
