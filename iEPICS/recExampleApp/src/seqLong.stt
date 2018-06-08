@@ -61,7 +61,7 @@ ss ssMain
 
       x = x + 0.01;
 
-      if(a >= 10000000) {
+      if(a >= 1000000) {
         dir == 0;
       } else if(a <= 8) {
         dir == 1;
