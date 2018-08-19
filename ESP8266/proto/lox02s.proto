@@ -1,0 +1,6 @@
+OutTerminator = LF;
+
+getOxygen{
+        out "getOxygen";
+        in "%f";
+}

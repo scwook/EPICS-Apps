@@ -1,0 +1,17 @@
+OutTerminator = LF;
+
+
+getTemp{
+	out "getTemperature";
+	in "%f";
+}
+
+getHumi{
+	out "getHumidity";
+	in "%f";
+}
+
+getPres{
+	out "getPressure";
+	in "%f";
+}

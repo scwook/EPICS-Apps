@@ -1,0 +1,40 @@
+record(ai, "temp")
+{
+  field(DTYP, "stream")
+  field(INP, "@bme280.proto getTemp ETH")
+  field(SCAN, "2 second")
+  field(PREC, "1")
+}
+
+record(ai, "humi")
+{
+  field(DTYP, "stream")
+  field(INP, "@bme280.proto getHumi ETH")
+  field(SCAN, "2 second")
+  field(PREC, "1")
+}
+
+record(ai, "pres")
+{
+  field(DTYP, "stream")
+  field(INP, "@bme280.proto getPres ETH")
+  field(SCAN, "2 second")
+  field(PREC, "1")
+}
+
+record(ai, "pres")
+{
+  field(DTYP, "stream")
+  field(INP, "@bme280.proto getPres ETH")
+  field(SCAN, "2 second")
+  field(PREC, "1")
+}
+
+record(ai, "oxygen")
+{
+  field(DTYP, "stream")
+  field(INP, "@lox-02-s.proto getOxygen ETH")
+  field(SCAN, "2 second")
+  field(PREC, "1")
+}
+

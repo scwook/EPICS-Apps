@@ -1,0 +1,8 @@
+record(ai, "oxygen")
+{
+  field(DTYP, "stream")
+  field(INP, "@lox02s.proto getOxygen $(P)")
+  field(SCAN, "2 second")
+  field(PREC, "1")
+}
+
