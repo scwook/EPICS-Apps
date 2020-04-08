@@ -89,7 +89,7 @@ class ReaderThread(threading.Thread):
                     # make a separated try-except for called used code
                     try:
                     #    self.protocol.data_received(data)
-			value = dic[str(data)] + '\n'
+			value = dataDic[str(data)] + '\n'
 			print(value)
                         self.write(value)
                     except Exception as e:
@@ -165,29 +165,43 @@ class ChannelMonitor:
         self.name = name
 
     def monitor(self, data):
-#        print(self.name, data['value'])
-        dic[self.name] = str(data['value'])
+        dataDic[self.name] = str(data['value'])
 
 PORT = '/dev/ttyAMA0'
 ser = serial.serial_for_url(PORT, baudrate=9600, timeout=3)
 
-pv1 = "scwookHost:ai1"
-pv2 = "scwookHost:ai2"
-pv3 = "scwookHost:ai3"
+pvList = list(line.strip() for line in open('pvList'))
 
-dic = {pv1:0.0, pv2:0.0, pv3:0.0}
+channelList = list()
+monitoringList = list()
+dataDic = dict()
 
-c1 = Channel(pv1, ProviderType.CA)
-m1 = ChannelMonitor(pv1)
-c1.monitor(m1.monitor)
+index = 0
+for name in pvList:
+	dataDic[name] = "06.19"
+        channelList.append(Channel(name, ProviderType.CA))
+        monitoringList.append(ChannelMonitor(name))
 
-c2 = Channel(pv2, ProviderType.CA)
-m2 = ChannelMonitor(pv2)
-c2.monitor(m2.monitor)
+        channelList[index].monitor(monitoringList[index].monitor)
+        index += 1
 
-c3 = Channel(pv3, ProviderType.CA)
-m3 = ChannelMonitor(pv3)
-c3.monitor(m3.monitor)
+#pv1 = "scwookHost:ai1"
+#pv2 = "scwookHost:ai2"
+#pv3 = "scwookHost:ai3"
+
+#dic = {pv1:0.0, pv2:0.0, pv3:0.0}
+
+#c1 = Channel(pv1, ProviderType.CA)
+#m1 = ChannelMonitor(pv1)
+#c1.monitor(m1.monitor)
+
+#c2 = Channel(pv2, ProviderType.CA)
+#m2 = ChannelMonitor(pv2)
+#c2.monitor(m2.monitor)
+
+#c3 = Channel(pv3, ProviderType.CA)
+#m3 = ChannelMonitor(pv3)
+#c3.monitor(m3.monitor)
 
 with ReaderThread(ser, rawProtocal) as p:
     while p.isDone():
