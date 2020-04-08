@@ -7,6 +7,8 @@
 
 cd "${TOP}"
 
+epicsEnvSet "STREAM_PROTOCOL_PATH" "../../proto"
+
 ## Register all support components
 dbLoadDatabase "dbd/client.dbd"
 client_registerRecordDeviceDriver pdbbase
@@ -23,7 +25,7 @@ asynSetOption("UART", 0, "parity", "none")
 ## Load record instances
 #dbLoadRecords("db/xxx.db","user=ctrluserHost")
 
-dbLoadRecordss("db/ai.db", "sys=scwookHost")
+dbLoadRecords("db/ai.db", "pvname=scwookHost")
 
 cd "${TOP}/iocBoot/${IOC}"
 iocInit
