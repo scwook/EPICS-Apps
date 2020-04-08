@@ -88,10 +88,13 @@ class ReaderThread(threading.Thread):
                 if data:
                     # make a separated try-except for called used code
                     try:
-                    #    self.protocol.data_received(data)
-			value = dataDic[str(data)] + '\n'
-			print(value)
-                        self.write(value)
+		        if data in dataDic:
+                        #    self.protocol.data_received(data)
+			    print(value)
+			    value = dataDic[data] + '\n'
+                            self.write(value)
+		        else:
+		            print("PV : \'" +  data +  "\' does not exist in the server")
                     except Exception as e:
                         error = e
                         break
