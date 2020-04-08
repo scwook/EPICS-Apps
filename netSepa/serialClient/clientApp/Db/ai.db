@@ -1,0 +1,15 @@
+record(ai, "$(sys):ai1")
+{
+  field(DTYP, "stream")
+  field(INP, "@client.client.proto get_ai_data($(pvname):ai1) UART")
+  field(SCAN, "1 second")
+}
+
+record(ai, "$(sys):ai2")
+{
+  field(DTYP, "stream")
+  field(INP, "@client.client.proto get_ai_data($(pvname):ai2) UART")
+  field(SCAN, "1 second")
+}
+
+
