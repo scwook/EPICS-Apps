@@ -87,11 +87,14 @@ class ReaderThread(threading.Thread):
             else:
                 if data:
                     # make a separated try-except for called used code
-                    try:
-                    #    self.protocol.data_received(data)
-			value = dic[str(data)] + '\n'
-			print(value)
-                        self.write(value)
+                    try: 
+		        if data in pvObjectDict:
+			    print(pvObjectDict[data]['value'])
+                        #    self.protocol.data_received(data)
+			    value = str(pvObjectDict[data]['value']) + '\n'
+                            self.write(value)
+		        else:
+		            print("PV : \'" +  data +  "\' does not exist in the server")
                     except Exception as e:
                         error = e
                         break
@@ -103,6 +106,7 @@ class ReaderThread(threading.Thread):
         """Thread safe writing (uses lock)"""
         with self._lock:
             self.serial.write(str(data))
+#            print('serial write data')
 
     def close(self):
         """Close the serial port and exit reader thread (uses lock)"""
@@ -111,6 +115,7 @@ class ReaderThread(threading.Thread):
             # first stop reading, so that closing can be done on idle port
             self.stop()
             self.serial.close()
+            print('serial closed')
 
     def connect(self):
         """
@@ -165,29 +170,27 @@ class ChannelMonitor:
         self.name = name
 
     def monitor(self, data):
-#        print(self.name, data['value'])
-        dic[self.name] = str(data['value'])
+ #       pvObjectDict[self.name] = str(data['value'])
+	pvObjectDict[self.name] = dict(data)
 
-PORT = '/dev/ttyAMA0'
-ser = serial.serial_for_url(PORT, baudrate=9600, timeout=3)
+PORT = '/dev/ttyS0'
+ser = serial.serial_for_url(PORT, baudrate=115200, timeout=3)
 
-pv1 = "scwookHost:ai1"
-pv2 = "scwookHost:ai2"
-pv3 = "scwookHost:ai3"
+pvList = list(line.strip() for line in open('pvList'))
 
-dic = {pv1:0.0, pv2:0.0, pv3:0.0}
+channelList = list()
+monitoringList = list()
+pvObjectDict = dict()
 
-c1 = Channel(pv1, ProviderType.CA)
-m1 = ChannelMonitor(pv1)
-c1.monitor(m1.monitor)
+index = 0
+for name in pvList:
+    channelList.append(Channel(name, ProviderType.CA))
+    monitoringList.append(ChannelMonitor(name))
 
-c2 = Channel(pv2, ProviderType.CA)
-m2 = ChannelMonitor(pv2)
-c2.monitor(m2.monitor)
+    channelList[index].monitor(monitoringList[index].monitor, 'field(value, alarm)')
+    print(name + ' monitoring start')
 
-c3 = Channel(pv3, ProviderType.CA)
-m3 = ChannelMonitor(pv3)
-c3.monitor(m3.monitor)
+    index += 1
 
 with ReaderThread(ser, rawProtocal) as p:
     while p.isDone():

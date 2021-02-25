@@ -1,0 +1,6 @@
+record(ai, "PI$(n):ai$(pv)") {
+  field(DTYP, "stream")
+  field(INP, "@client.proto get_ai_data(PI$(n):ai$(pv)) UART")  
+  field(SCAN, "1 second")
+}
+
