@@ -1,0 +1,48 @@
+record(bi, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):status1")
+{
+  field(DESC, "FPS $(SUBDEV)-1 Status")
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+record(bi, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):status2")
+{
+  field(DESC, "FPS $(SUBDEV)-2 Status")
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+record(bi, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):status3")
+{
+  field(DESC, "FPS $(SUBDEV)-3 Status")
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+record(bi, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):status4")
+{
+  field(DESC, "FPS $(SUBDEV)-4 Status")
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+record(bi, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):status5")
+{
+  field(DESC, "FPS $(SUBDEV)-5 Status")
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+record(bi, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):status6")
+{
+  field(DESC, "FPS $(SUBDEV)-6 Status")
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+record(bi, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):status7")
+{
+  field(DESC, "FPS $(SUBDEV)-7 Status")
+  field(VAL, "0")
+  field(PINI, "YES")
+}

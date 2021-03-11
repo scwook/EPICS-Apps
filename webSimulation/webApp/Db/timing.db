@@ -1,0 +1,25 @@
+record(ai, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):width")
+{
+  field(DESC, "Timing Width")
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+
+record(ai, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):delay")
+{
+  field(DESC, "Timing Delay")
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+record(bi, "$(SYS)-$(SUBSYS):$(DEV)-$(SUBDEV):polarity")
+{
+  field(DESC, "Timing polarity")
+  field(VAL, "0")
+  field(PINI, "YES")
+}
+
+
+
+
