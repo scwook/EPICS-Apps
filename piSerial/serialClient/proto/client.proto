@@ -5,3 +5,8 @@ get_ai_data {
 	out "\$1";
 	in "%f";
 }
+
+get_bi_data {
+	out "\$1";
+	in "%d";
+}

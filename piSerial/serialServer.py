@@ -173,6 +173,10 @@ class ChannelMonitor:
  #       pvObjectDict[self.name] = str(data['value'])
 	pvObjectDict[self.name] = dict(data)
 
+        if type(pvObjectDict[self.name]['value']) is dict:
+            pvObjectDict[self.name]['value'] = pvObjectDict[self.name]['value']['index']
+
+
 PORT = '/dev/ttyS0'
 ser = serial.serial_for_url(PORT, baudrate=115200, timeout=3)
 
